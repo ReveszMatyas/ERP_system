@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Sphere?>
+<?import javafx.scene.text.Font?>
+
+
+   <AnchorPane prefHeight="587.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NavigationButtonsController">
+   <children>
+      <ButtonBar layoutX="152.0" layoutY="368.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="55.0" prefWidth="494.0">
+        <buttons>
+          <Button fx:id="StockPageBtn" mnemonicParsing="false" onAction="#displayStock" prefHeight="30.0" prefWidth="120.0" text="Total Stock" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="addStockBtn" mnemonicParsing="false" onAction="#displayAddStock" prefWidth="120.0" text="Input Stock" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="OrderBtn" mnemonicParsing="false" onAction="#DisplayOrder" prefWidth="120.0" text="Order" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="AddRecipeBtn" mnemonicParsing="false" onAction="#displayAddRecipe" prefWidth="120.0" text="Add recipe" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+        </buttons>
+      </ButtonBar>
+      <Sphere layoutX="399.0" layoutY="171.0" radius="130.0" />
+   </children>
+</AnchorPane>

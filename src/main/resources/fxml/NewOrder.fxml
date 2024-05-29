@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="723.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NewOrderController">
+   <children>
+       <fx:include source="navigation_buttons.fxml" />
+      <TreeView fx:id="requiredItemsTreeView" layoutX="239.0" layoutY="84.0" prefHeight="334.0" prefWidth="441.0" />
+      <TableView fx:id="requiredRawMaterialTable" layoutX="239.0" layoutY="429.0" prefHeight="269.0" prefWidth="441.0">
+        <columns>
+            <TableColumn fx:id="ReqProdIdColumn" prefWidth="75.0" text="Product ID" />
+          <TableColumn fx:id="reqItemsTableColumn" prefWidth="221.0" text="Required items" />
+          <TableColumn fx:id="RequiredItemsQtyTableCol" prefWidth="66.0" text="Quantity" />
+            <TableColumn fx:id="reqItemsUnitTableColumn" prefWidth="75.0" text="Unit" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnPlaceManufactureOrder" layoutX="737.0" layoutY="579.0" mnemonicParsing="false" onAction="#placeManufactureOrder" prefHeight="46.0" prefWidth="206.0" text="Place Manufacture Order">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ListView fx:id="listCraftableItems" layoutX="14.0" layoutY="54.0" prefHeight="645.0" prefWidth="200.0" />
+      <Label layoutX="689.0" layoutY="475.0" text="Manufacture order qty:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="orderQtyTxtField" layoutX="880.0" layoutY="471.0" onAction="#changeQuantityQuotient" prefHeight="25.0" prefWidth="99.0" />
+      <Label fx:id="errorMessage" alignment="TOP_CENTER" layoutX="685.0" layoutY="499.0" prefHeight="80.0" prefWidth="309.0" textFill="RED" />
+      <Label alignment="TOP_CENTER" layoutX="239.0" layoutY="52.0" prefHeight="35.0" prefWidth="441.0" text="Recipe Overview">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderPlaced" alignment="TOP_LEFT" layoutX="695.0" layoutY="653.0" prefHeight="64.0" prefWidth="278.0" text="Order placed." visible="false" />
+   </children>
+</AnchorPane>

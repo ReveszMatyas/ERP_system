@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="587.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddRecipeController">
+   <children>
+       <fx:include source="navigation_buttons.fxml" />
+      <TableView fx:id="tableRequirements" layoutX="22.0" layoutY="83.0" prefHeight="200.0" prefWidth="317.0">
+        <columns>
+          <TableColumn fx:id="tableColReqProductName" prefWidth="204.0" text="Required Product" />
+          <TableColumn fx:id="tableColReqQuantity" prefWidth="112.0" text="Required Quantity" />
+        </columns>
+      </TableView>
+      <TextField fx:id="prodName" layoutX="366.0" layoutY="101.0" prefHeight="25.0" prefWidth="209.0" />
+      <Label layoutX="366.0" layoutY="83.0" text="Product name" />
+      <Label layoutX="366.0" layoutY="134.0" text="Quantity" />
+      <TextField fx:id="qty" layoutX="366.0" layoutY="151.0" prefHeight="25.0" prefWidth="209.0" />
+      <Button layoutX="411.0" layoutY="198.0" mnemonicParsing="false" onAction="#addRequirement" prefHeight="25.0" prefWidth="120.0" text="Add requirement">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtFieldleadTime" layoutX="235.0" layoutY="415.0" prefHeight="25.0" prefWidth="209.0" />
+      <Label layoutX="284.0" layoutY="398.0" text="Lead time in seconds" />
+      <Button layoutX="280.0" layoutY="451.0" mnemonicParsing="false" onAction="#addRecipe" prefHeight="25.0" prefWidth="120.0" text="Add recipe">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblErrorMsg" alignment="TOP_CENTER" layoutX="354.0" layoutY="231.0" prefHeight="71.0" prefWidth="233.0" text="Product does not exist in the product repo!" textFill="RED" visible="false" />
+      <TextField fx:id="txtFieldProdName" layoutX="236.0" layoutY="373.0" prefHeight="25.0" prefWidth="209.0" />
+      <Label layoutX="301.0" layoutY="356.0" text="Product Name" />
+      <Label fx:id="lblErrorMsg2" alignment="TOP_CENTER" layoutX="236.0" layoutY="488.0" prefHeight="81.0" prefWidth="209.0" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>

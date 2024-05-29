@@ -1,0 +1,274 @@
+[ {
+  "id" : 1,
+  "type" : "raw material",
+  "unit" : "kg",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "PE granulatum (black)"
+}, {
+  "id" : 2,
+  "type" : "raw material",
+  "unit" : "kg",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "HDPE granulatum (black)"
+}, {
+  "id" : 3,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Bolt 50mm"
+}, {
+  "id" : 4,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Bolt 70mm"
+}, {
+  "id" : 5,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Nut 20mm"
+}, {
+  "id" : 6,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Nut 30mm"
+}, {
+  "id" : 7,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Spacer 5mm"
+}, {
+  "id" : 8,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "PCB"
+}, {
+  "id" : 9,
+  "type" : "raw material",
+  "unit" : "m",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Copper wire"
+}, {
+  "id" : 10,
+  "type" : "raw material",
+  "unit" : "m2",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Tinfoil"
+}, {
+  "id" : 11,
+  "type" : "raw material",
+  "unit" : "m",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Zinc wire"
+}, {
+  "id" : 12,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Chip"
+}, {
+  "id" : 13,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Capacitor"
+}, {
+  "id" : 14,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Resistor 1 ohm"
+}, {
+  "id" : 15,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Resistor 2 ohm"
+}, {
+  "id" : 16,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Cover sheet"
+}, {
+  "id" : 17,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Driver Cover"
+}, {
+  "id" : 18,
+  "type" : "raw material",
+  "unit" : "l",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Paint (red)"
+}, {
+  "id" : 19,
+  "type" : "raw material",
+  "unit" : "l",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Paint (green)"
+}, {
+  "id" : 20,
+  "type" : "raw material",
+  "unit" : "l",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Paint (blue)"
+}, {
+  "id" : 21,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Battery A"
+}, {
+  "id" : 22,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Battery AA"
+}, {
+  "id" : 23,
+  "type" : "finished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Driver Unit"
+}, {
+  "id" : 24,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Board"
+}, {
+  "id" : 25,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "CPU"
+}, {
+  "id" : 26,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "LED"
+}, {
+  "id" : 27,
+  "type" : "raw material",
+  "unit" : "kg",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "PE granulatum (clear)"
+}, {
+  "id" : 28,
+  "type" : "finished",
+  "unit" : "m",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "LED line"
+}, {
+  "id" : 29,
+  "type" : "finished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Flashlight"
+}, {
+  "id" : 30,
+  "type" : "finished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Remote control"
+}, {
+  "id" : 31,
+  "type" : "raw material",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Button"
+}, {
+  "id" : 32,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Flashlight cover"
+}, {
+  "id" : 33,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Remote control cover"
+}, {
+  "id" : 34,
+  "type" : "semifinished",
+  "unit" : "pc",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Flashlight pane"
+}, {
+  "id" : 35,
+  "type" : "finished",
+  "unit" : "pc",
+  "isActive" : false,
+  "active" : false,
+  "prod_name" : "Magic marker"
+}, {
+  "id" : 36,
+  "type" : "pc",
+  "unit" : "semifinished",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "r234rf3"
+}, {
+  "id" : 37,
+  "type" : "pc",
+  "unit" : "semifinished",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "r234rf3234ddd"
+}, {
+  "id" : 38,
+  "type" : "l",
+  "unit" : "semifinished",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "fsdsdfsdf"
+}, {
+  "id" : 39,
+  "type" : "penis",
+  "unit" : "semifinished",
+  "isActive" : false,
+  "active" : false,
+  "prod_name" : "Dildo"
+} ]

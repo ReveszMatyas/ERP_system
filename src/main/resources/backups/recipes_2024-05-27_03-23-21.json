@@ -1,0 +1,109 @@
+[
+  {
+    "prodId": 30,
+    "lead_time_in_secs": 120,
+    "requiredProducts": {
+      "22": 2,
+      "32": 1,
+      "26": 1,
+      "31": 4,
+      "33": 1
+    }
+  },
+  {
+    "prodId": 29,
+    "lead_time_in_secs": 20,
+    "requiredProducts": {
+      "32" : 1,
+      "26": 12,
+      "34": 1,
+      "31": 1
+    }
+  },
+  {
+    "prodId": 8,
+    "lead_time_in_secs": 132,
+    "requiredProducts" : {
+      "24": 1,
+      "11": 3,
+      "9": 2,
+      "10": 1,
+      "14": 4,
+      "15": 3,
+      "13": 2,
+      "12": 4,
+      "25": 1
+    }
+  },
+  {
+    "prodId" : 24,
+    "lead_time_in_secs": 10,
+    "requiredProducts": {
+      "1": 0.2,
+      "2": 0.1,
+      "18": 0.1,
+      "19": 0.3,
+      "20": 0.1
+    }
+  },
+  {
+    "prodId" : 23,
+    "lead_time_in_secs": 20,
+    "requiredProducts": {
+      "21": 4,
+      "17": 1,
+      "8": 1,
+      "7": 5,
+      "3": 4,
+      "5": 4
+    }
+  },
+  {
+    "prodId" : 16,
+    "lead_time_in_secs": 10,
+    "requiredProducts": {
+      "1": 0.6,
+      "2": 0.2
+      }
+  },
+  {
+  "prodId" : 17,
+  "lead_time_in_secs": 14,
+  "requiredProducts": {
+    "16": 4,
+    "4": 8,
+    "6": 8
+  }
+  },
+  {
+    "prodId" : 34,
+    "lead_time_in_secs": 1,
+    "requiredProducts": {
+      "27": 0.2
+    }
+  },
+  {
+    "prodId" : 32,
+    "lead_time_in_secs": 12,
+    "requiredProducts": {
+      "1": 0.1,
+      "2": 0.2
+    }
+  },
+  {
+    "prodId" : 33,
+    "lead_time_in_secs": 27,
+    "requiredProducts": {
+      "1": 0.1,
+      "2": 0.2
+    }
+  },
+  {
+    "prodId":28,
+    "lead_time_in_secs": 30,
+    "requiredProducts" : {
+      "26": 30,
+      "27": 2
+      }
+  }
+]
