@@ -2,10 +2,6 @@ import Logic.ProductInfoLogic;
 import Logic.exceptions.ProductWithoutIdException;
 import Logic.model.Product;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-
-import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +14,7 @@ class ProductInfoLogicTest {
 
     @Test
     void isProductCacheNotEmpty(){
-        assertTrue(!ProductInfoLogic.getProducts().isEmpty(), "The cache array should not be empty.");
+        assertFalse(ProductInfoLogic.getProducts().isEmpty(), "The cache array should not be empty.");
     }
 
     @Test
@@ -32,13 +28,13 @@ class ProductInfoLogicTest {
     }
 
     @Test
-    void getProductByIdwithMAXVALisNull(){
-        assertEquals(ProductInfoLogic.getProductById(Integer.MAX_VALUE), null);
+    void getProductByIdWithMAXVALisNull(){
+        assertNull(ProductInfoLogic.getProductById(Integer.MAX_VALUE));
     }
 
     @Test
-    void getProductByIdwithzeroisNull(){
-        assertEquals(ProductInfoLogic.getProductById(Integer.MAX_VALUE), null);
+    void getProductByIdWithZeroIsNull(){
+        assertNull(ProductInfoLogic.getProductById(Integer.MAX_VALUE));
     }
 
     @Test
@@ -47,7 +43,7 @@ class ProductInfoLogicTest {
     }
 
     @Test
-    void getIdByProdNameIsMAXVALIfProdNameisEmptyString(){
+    void getIdByProdNameIsMAXVALIfProdNameIsEmptyString(){
         assertEquals(ProductInfoLogic.getIdByProdName(""), Integer.MAX_VALUE);
     }
 

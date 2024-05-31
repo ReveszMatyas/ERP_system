@@ -16,9 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import org.junit.platform.commons.util.StringUtils;
 import org.tinylog.Logger;
-import com.google.common.base.Strings;
 
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -67,7 +65,7 @@ public class AddRecipeController {
             return;
         }
 
-        int leadTime = 0;
+        int leadTime;
 
         try {
             leadTime = Integer.parseInt(txtFieldleadTime.getText());

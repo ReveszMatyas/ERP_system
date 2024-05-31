@@ -129,7 +129,7 @@ public class AddStockController {
         }
         else {
             double qty = Double.parseDouble(newQtyTxtField.getText());
-            if (qty <= 0){
+            if (qty < 0){
                 errorMessage(errorMessageLabel2, "Please enter a positive number!");
                 return;
             }
@@ -139,6 +139,7 @@ public class AddStockController {
             Product newProd = new Product(newProdId, newProdNameTxtField.getText(), newUnitCombo.getValue(), newTypeCombo.getValue(), newisActiveBox.isSelected());
             try {
                 ProductInfoLogic.addNewProductInfo(newProd);
+                Logger.info(MessageFormat.format("New product was added to the product information repo. id:{0} name:{1}", newProd.getId(), newProd.getProdName()));
             } catch (ProductWithoutIdException e){
                 Logger.error(e.getMessage());
             } catch (IOException e){
@@ -151,14 +152,13 @@ public class AddStockController {
 
             try {
                 StockLogic.addNewStock(newStock);
+                Logger.info(MessageFormat.format("New stock info was added to the stock repo.id: {0} qty: {1}", newProdId, qty));
             } catch (IOException e){
                 Logger.error(MessageFormat.format("An error occurred while trying to add stock to the new product: {0} in quantity: {1}", newProd.getProdName(), newStock.getQty() , e));
             } finally {
                 initProductList();
             }
         }
-
-
     }
 
     private void errorMsgVisible(Label errorLbl, boolean bool){
@@ -208,18 +208,13 @@ public class AddStockController {
         qtyToAddTextField.setText("");
     }
 
-
     @FXML
     void fillComboBoxTypes() {
         ObservableList<String> types = FXCollections.observableArrayList();
-        for (String type : ProductInfoLogic.getTypesDistinct()){
-            types.add(type);
-        }
+        types.addAll(ProductInfoLogic.getTypesDistinct());
 
         ObservableList<String> units = FXCollections.observableArrayList();
-        for (String unit : ProductInfoLogic.getUnitsDistinct()){
-            units.add(unit);
-        }
+        units.addAll(ProductInfoLogic.getUnitsDistinct());
 
         newTypeCombo.setItems(types);
         newUnitCombo.setItems(units);

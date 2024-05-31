@@ -74,4 +74,35 @@ class ILogicTest {
     void testIsNumericWithLeadingAndTrailingSpaces() {
         assertTrue(ILogic.isNumeric("  3456345.34563  "), "Number with leading and trailing spaces should return true after trim");
     }
+
+    @Test
+    void testNullString() {
+        String str = null;
+        assertTrue(ILogic.isNullOrEmpty(str), "Null string should return true");
+    }
+
+    @Test
+    void testEmptyString() {
+        String str = "";
+        assertTrue(ILogic.isNullOrEmpty(str), "Empty string should return true");
+    }
+
+    @Test
+    void testNonEmptyString() {
+        String str = "hello";
+        assertFalse(ILogic.isNullOrEmpty(str), "Non-empty string should return false");
+    }
+
+    @Test
+    void testStringWithSpaces() {
+        String str = "   ";
+        assertFalse(ILogic.isNullOrEmpty(str), "String with only spaces should return false");
+    }
+
+    @Test
+    void testStringWithContentAndSpaces() {
+        String str = " hello ";
+        assertFalse(ILogic.isNullOrEmpty(str), "String with content and spaces should return false");
+    }
+
 }

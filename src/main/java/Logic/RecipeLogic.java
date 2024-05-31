@@ -37,6 +37,10 @@ public abstract class RecipeLogic{
     }
 
 
+    public static List<Recipe> getRecipes(){
+        return recipes;
+    }
+
     /**
      * Reads all recipe information from the JSON file and returns a list of recipes.
      * This method is called during the static initialization block, so that recipes are
@@ -82,7 +86,7 @@ public abstract class RecipeLogic{
 
         List<Recipe> recipes = getRecipebyId(id);
 
-        if (recipes.size() == 0){
+        if (recipes == null || recipes.size() == 0){
             return null;
         }
         return recipes.get(0);

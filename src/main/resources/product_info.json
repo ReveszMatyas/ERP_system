@@ -245,9 +245,16 @@
   "prod_name" : "Magic marker"
 }, {
   "id" : 36,
-  "type" : "dm3",
-  "unit" : "raw material",
-  "isActive" : false,
-  "active" : false,
+  "type" : "l",
+  "unit" : "semifinished",
+  "isActive" : true,
+  "active" : true,
   "prod_name" : "Test Product"
+}, {
+  "id" : 37,
+  "type" : "t",
+  "unit" : "raw material",
+  "isActive" : true,
+  "active" : true,
+  "prod_name" : "Tester"
 } ]
