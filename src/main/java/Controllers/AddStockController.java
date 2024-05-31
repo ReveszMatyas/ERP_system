@@ -3,19 +3,19 @@ package Controllers;
 import Logic.ILogic;
 import Logic.ProductInfoLogic;
 import Logic.StockLogic;
+import Logic.exceptions.ProductWithoutIdException;
 import Logic.model.Product;
 import Logic.model.Stock;
-import com.mysql.cj.util.StringUtils;
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.tinylog.Logger;
 
 import java.io.IOException;
-import java.util.List;
+import java.text.MessageFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -117,16 +117,15 @@ public class AddStockController {
     private CheckBox newisActiveBox;
 
     @FXML
-    void AddNewItem(ActionEvent event) throws IOException {
-        if (StringUtils.isNullOrEmpty(newProdNameTxtField.getText()))
-        {
+    void AddNewItem(ActionEvent event) {
+        if (ILogic.isNullOrEmpty(newProdNameTxtField.getText())) {
             errorMessage(errorMessageLabel2, "Please enter a valid product name!");
         } else if(ProductInfoLogic.getProductByProdName(newProdNameTxtField.getText()) != null){
             errorMessage(errorMessageLabel2, "The product name already exists. If you need to add stock to an existing product, use the fields above!");
-        } else if(StringUtils.isNullOrEmpty(newTypeCombo.getValue()) || StringUtils.isNullOrEmpty(newUnitCombo.getValue())){
+        } else if(ILogic.isNullOrEmpty(newTypeCombo.getValue()) || ILogic.isNullOrEmpty(newUnitCombo.getValue())){
             errorMessage(errorMessageLabel2, "Please enter a valid item type and unit!");
-        } else if(StringUtils.isNullOrEmpty(newQtyTxtField.getText()) ||  !ILogic.isNumeric(newQtyTxtField.getText())) {
-            errorMessage(errorMessageLabel2, "Please enter a valid quantity numer+");
+        } else if(ILogic.isNullOrEmpty(newQtyTxtField.getText()) ||  !ILogic.isNumeric(newQtyTxtField.getText())) {
+            errorMessage(errorMessageLabel2, "Please enter a valid quantity numer");
         }
         else {
             double qty = Double.parseDouble(newQtyTxtField.getText());
@@ -138,14 +137,25 @@ public class AddStockController {
             int newProdId = ProductInfoLogic.getNewItemId();
 
             Product newProd = new Product(newProdId, newProdNameTxtField.getText(), newUnitCombo.getValue(), newTypeCombo.getValue(), newisActiveBox.isSelected());
-
-            ProductInfoLogic.addNewProductInfo(newProd); // TODO: catch exception
+            try {
+                ProductInfoLogic.addNewProductInfo(newProd);
+            } catch (ProductWithoutIdException e){
+                Logger.error(e.getMessage());
+            } catch (IOException e){
+                Logger.error(MessageFormat.format("An error occurred while trying to add {0} product to repository {1}", newProd.getProdName(), ProductInfoLogic.path));
+                Logger.error(e.getMessage());
+                Logger.error(e.getStackTrace());
+            }
 
             Stock newStock = new Stock(newProdId, qty);
 
-            StockLogic.addNewStock(newStock); // TODO: catch exception
-
-            initProductList();
+            try {
+                StockLogic.addNewStock(newStock);
+            } catch (IOException e){
+                Logger.error(MessageFormat.format("An error occurred while trying to add stock to the new product: {0} in quantity: {1}", newProd.getProdName(), newStock.getQty() , e));
+            } finally {
+                initProductList();
+            }
         }
 
 
@@ -172,13 +182,13 @@ public class AddStockController {
     }
 
     @FXML
-    void addStockToExistingItem(ActionEvent event) throws IOException {
+    void addStockToExistingItem(ActionEvent event){
         if (selectedProduct == null){
             errorMessage(errorMessageLabel, "Please select an item before progressing!");
         } else if(prod == null) {
             errorMessage(errorMessageLabel,"No product has been choosen, or product does not exist.");
         }
-        else if (StringUtils.isNullOrEmpty(qtyToAddTextField.getText()) ||  !ILogic.isNumeric(qtyToAddTextField.getText())){
+        else if (ILogic.isNullOrEmpty(qtyToAddTextField.getText()) ||  !ILogic.isNumeric(qtyToAddTextField.getText())){
             errorMessage(errorMessageLabel, "Please input a valid number!");
         } else {
             double qty = Double.parseDouble(qtyToAddTextField.getText());
@@ -186,7 +196,13 @@ public class AddStockController {
                 errorMessage(errorMessageLabel,"Please enter a positive number!");
                 return;
             }
-            StockLogic.addStockToItem(prod.getId(), qty); // TODO: catch exception
+            try {
+                StockLogic.addStockToItem(prod.getId(), qty);
+            }
+            catch (IOException e){
+                Logger.error("An error occurred while trying to add stock to selected item. product:{0} quantity:{1}", prod.getProdName() ,qty);
+            }
+
             populateSelectedProductData();
         }
         qtyToAddTextField.setText("");

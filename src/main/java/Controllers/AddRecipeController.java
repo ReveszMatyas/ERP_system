@@ -5,7 +5,6 @@ import Logic.ProductInfoLogic;
 import Logic.RecipeLogic;
 import Logic.model.Product;
 import Logic.model.Recipe;
-import com.mysql.cj.util.StringUtils;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,8 +16,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.junit.platform.commons.util.StringUtils;
+import org.tinylog.Logger;
+import com.google.common.base.Strings;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -52,7 +55,7 @@ public class AddRecipeController {
     }
 
     @FXML
-    void addRecipe(ActionEvent event) throws IOException {
+    void addRecipe(ActionEvent event) {
         Product product = ProductInfoLogic.getProductByProdName(txtFieldProdName.getText());
         if (product == null){
             displayMessage(lblErrorMsg2, "Choosen product does not exist.\nPlease check spelling.");
@@ -74,9 +77,13 @@ public class AddRecipeController {
         }
 
         Recipe recipe = new Recipe(product.getId(), populateRecipeHashMap(), leadTime);
-        RecipeLogic.addNewRecipe(recipe); // todo error handling
-        displayMessage(lblErrorMsg2, "Recipe added to product: " + product.getProdName() + ".");
-        requirement.clear();
+        try {
+            RecipeLogic.addNewRecipe(recipe);
+            displayMessage(lblErrorMsg2, "Recipe added to product: " + product.getProdName() + ".");
+            requirement.clear();
+        } catch (IOException e){
+            Logger.error(MessageFormat.format("An error occurred while trying to add recipe to {0}", product.getProdName()));
+        }
     }
 
     private void displayMessage(Label label, String message){
@@ -107,7 +114,7 @@ public class AddRecipeController {
             return;
         }
 
-        if (StringUtils.isNullOrEmpty(qty.getText()) || !ILogic.isNumeric(qty.getText())){
+        if (ILogic.isNullOrEmpty(qty.getText()) || !ILogic.isNumeric(qty.getText())){
             displayMessage(lblErrorMsg, "Please enter a valid quantity number");
             return;
         }

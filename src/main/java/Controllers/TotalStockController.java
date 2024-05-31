@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import org.tinylog.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,23 +25,17 @@ import java.util.Map;
 
 public class TotalStockController {
 
-    private List<Map<Product, Double>> data;
-
-    private void refreshData(){
-        try {
-            data = ProductInfoLogic.getProductAndStock();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private void refreshTable(){
 
         stockTable.getItems().clear();
 
         ObservableList<Map.Entry<Product, Double>> items = FXCollections.observableArrayList();
-        for (Map<Product, Double> map : data) {
-            items.addAll(map.entrySet());
+        try {
+            for (Map<Product, Double> map : ProductInfoLogic.getProductAndStock()) {
+                items.addAll(map.entrySet());
+            }
+        } catch (IOException e) {
+            Logger.error("An error occurred while trying to add products and stock to table. Please check the method call and the repo.", e);
         }
 
         stockTable.setItems(items);
@@ -57,7 +52,6 @@ public class TotalStockController {
         unitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey().getUnit()));
         isActiveColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getKey().isActive()));
 
-        refreshData();
         refreshTable();
 
     }

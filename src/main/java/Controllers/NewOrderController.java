@@ -4,7 +4,6 @@ import Logic.*;
 import Logic.Manufacture;
 import Logic.model.Product;
 import Logic.model.Recipe;
-import com.mysql.cj.util.StringUtils;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -13,8 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.IOException;
 import java.util.*;
 
 public class NewOrderController {
@@ -47,7 +44,7 @@ public class NewOrderController {
         listCraftableItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedProductName = newValue;
 
-            if (StringUtils.isNullOrEmpty(selectedProductName)){
+            if (ILogic.isNullOrEmpty(selectedProductName)){
                 displayMessage(errorMessage, "The selected product does not exist, or the name is empty");
                 return;
             }
@@ -157,7 +154,7 @@ public class NewOrderController {
 
 
     @FXML
-    private void placeManufactureOrder() throws IOException {
+    private void placeManufactureOrder(){
         if (recipeOfSelected == null)
             displayMessage(errorMessage, "Selected recipe does not exist!");
 
@@ -166,7 +163,7 @@ public class NewOrderController {
             return;
         }
 
-        if (StringUtils.isNullOrEmpty(orderQtyTxtField.getText()) || !ILogic.isNumeric(orderQtyTxtField.getText())){
+        if (ILogic.isNullOrEmpty(orderQtyTxtField.getText()) || !ILogic.isNumeric(orderQtyTxtField.getText())){
             displayMessage(errorMessage, "Please select a valid quantity to manufacture");
             return;
         }
@@ -176,7 +173,7 @@ public class NewOrderController {
     }
 
     private boolean isPossibleToManufacture() {
-        if(!StockLogic.isCraftingPossible(rawRequirements, qtyQuotient)){
+        if(!StockLogic.isManufacturePossible(rawRequirements, qtyQuotient)){
             displayMessage(errorMessage, "Manufacturing of selected items in selected\nquantity is not possible!");
             return false;
         }
@@ -205,7 +202,7 @@ public class NewOrderController {
 
     @FXML
     void changeQuantityQuotient(){
-        if (StringUtils.isNullOrEmpty(orderQtyTxtField.getText()) || !ILogic.isNumeric(orderQtyTxtField.getText())){
+        if (ILogic.isNullOrEmpty(orderQtyTxtField.getText()) || !ILogic.isNumeric(orderQtyTxtField.getText())){
             qtyQuotient = 1;
         } else {
             double qty = Double.parseDouble(orderQtyTxtField.getText());

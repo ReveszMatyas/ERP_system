@@ -10,6 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
+/**
+ * Represents a product with its details.
+ * This class is used to deserialize JSON data from external sources.
+ * It contains product details such as id, name, description, and price.
+ */
 public class Product {
 
     @JsonProperty
